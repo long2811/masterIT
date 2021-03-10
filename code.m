@@ -37,12 +37,12 @@ end %Object B
 % close all
 
 %c = randi([1 315]); % Pulling a random reading from data of Object A
-for c = 1:100
+for c = 101:200
 close all
 S = table2array(B(c,1:width(A))); 
 S = S./max(max(S),abs(min(S))); % normalizing
-figure('Name',"Reading "+c+" of Object A")
-plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
+% figure('Name',"Reading "+c+" of Object A")
+% plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
 
 L = 10; %Signal duration = 10s assumption
 n = 3400; % Number of samples
