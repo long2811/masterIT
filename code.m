@@ -5,7 +5,7 @@
 % machine learning binary classifiers
 % NGUYEN, HOANG LONG 1067534 hoang.nguyen3@stu.fra-uas.de
 % TRUONG, THANH TOAN 1185050 tthanh@stud.fra-uas.de
-% NGUYEN, THANH DUY 1067783 ngthanhduy7@gmail.com
+% NGUYEN, THANH DUY 1067783 duy.nguyenthanh2@stud.fra-uas.de
 
 %% Import data from XLS Excel file - should only run once to save time !
 clear; close all; clc
