@@ -1,5 +1,4 @@
-digitDatasetPath = fullfile(matlabroot,'machinelearning', ...
-    'spectroDataset');
+digitDatasetPath = fullfile('E:\My Studys\Semester-3 03_11_2020--21_02_2020\Machine Learning\Project\masterIT');
 imds = imageDatastore(digitDatasetPath, ...
     'IncludeSubfolders',true,'LabelSource','foldernames');
 
@@ -8,7 +7,7 @@ labelCount = countEachLabel(imds)
 img = readimage(imds,1);
 size(img)
 
-numTrainFiles = 175;
+numTrainFiles = 100;
 [imdsTrain,imdsValidation] = splitEachLabel(imds,numTrainFiles,'randomize');
 
 layers = [
@@ -51,3 +50,4 @@ YPred = classify(net,imdsValidation);
 YValidation = imdsValidation.Labels;
 
 accuracy = sum(YPred == YValidation)/numel(YValidation)
+save net;
