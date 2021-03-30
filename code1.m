@@ -1,5 +1,10 @@
 %% Specify the dataset directory
+<<<<<<< HEAD
 digitDatasetPath = pwd;
+=======
+currentFolder = pwd
+digitDatasetPath = fullfile(currentFolder);
+>>>>>>> e5a3792ea644839d78872b0d23f770ff460cbaee
 imds = imageDatastore(digitDatasetPath, ...
     'IncludeSubfolders',true,'LabelSource','foldernames');
 %% Getting number of labels
@@ -50,6 +55,6 @@ net = trainNetwork(imdsTrain,layers,options);
 %% Checking Network Performance
 YPred = classify(net,imdsValidation);
 YValidation = imdsValidation.Labels;
-accuracy = sum(YPred == YValidation)/numel(YValidation)
+accuracy = sum(YPred == YValidation)/numel(YValidation);
 %% Save the Network for future validation
 save net;
