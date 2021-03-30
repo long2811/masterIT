@@ -1,8 +1,9 @@
 %% Specify the dataset directory
 currentFolder = pwd;
-imds = imageDatastore(fullfile(currentFolder, 'trainingData'), ...
+imds = imageDatastore(currentFolder, ...
     'IncludeSubfolders',true,'LabelSource','foldernames');
-imds2 = imageDatastore(fullfile(currentFolder, 'validationData'));
+imds2 = imageDatastore(currentFolder], ...
+    'IncludeSubfolders',true,'LabelSource','foldernames');
 %% Getting number of labels
 labelCount = countEachLabel(imds);
 %% Getting Image Size from first image in 'imds'
