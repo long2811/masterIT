@@ -1,11 +1,6 @@
 %% Specify the dataset directory
-<<<<<<< HEAD
-digitDatasetPath = pwd;
-=======
-currentFolder = pwd
-digitDatasetPath = fullfile(currentFolder);
->>>>>>> e5a3792ea644839d78872b0d23f770ff460cbaee
-imds = imageDatastore(digitDatasetPath, ...
+currentFolder = pwd;
+imds = imageDatastore(currentFolder, ...
     'IncludeSubfolders',true,'LabelSource','foldernames');
 %% Getting number of labels
 labelCount = countEachLabel(imds);
