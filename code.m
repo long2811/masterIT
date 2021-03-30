@@ -37,9 +37,9 @@ t = (1:width(B)); % Time vector 1:3400 samples
 % close all
 
 %c = randi([1 315]); % Pulling a random reading from data of Object A
-for c = 1:315
+for c = 1:200
 close all
-S = table2array(A(c,1:width(A))); 
+S = table2array(B(c,1:width(B))); 
 S = S./max(max(S),abs(min(S))); % normalizing
 % figure('Name',"Reading "+c+" of Object A")
 % plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
@@ -74,11 +74,11 @@ end
 %     end
 % end
 Sgt_spec=Sgt_spec';% transpose the Spectrogram for better representation
-figure('Name',"Spectrogram of reading "+c+" of Object A")
+figure('Name',"Spectrogram of reading "+c+" of Object B")
 pcolor(tslide,ks,Sgt_spec),shading interp
 set(gca,'Ylim',[30 60])
 colormap gray
 set(gca, 'Visible', 'off');
-exportgraphics(gca,"spectrogramA/spectrogramA_"+c+".jpg",'Resolution',100)
+exportgraphics(gca,"spectrogramB/spectrogramB_"+c+".jpg",'Resolution',100)
 pause(0.01);
 end
