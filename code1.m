@@ -2,7 +2,6 @@
 currentFolder = pwd;
 imds = imageDatastore(fullfile(currentFolder, 'trainingData'), ...
     'IncludeSubfolders',true,'LabelSource','foldernames');
-imds2 = imageDatastore(fullfile(currentFolder, 'validationData'));
 %% Getting number of labels
 labelCount = countEachLabel(imds);
 %% Getting Image Size from first image in 'imds'
@@ -54,3 +53,4 @@ YValidation = imdsValidation.Labels;
 accuracy = sum(YPred == YValidation)/numel(YValidation);
 %% Save the Network for future validation
 save net;
+
