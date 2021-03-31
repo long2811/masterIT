@@ -50,7 +50,26 @@ net = trainNetwork(imdsTrain,layers,options);
 %% Checking Network Performance
 YPred = classify(net,imdsValidation);
 YValidation = imdsValidation.Labels;
-accuracy = sum(YPred == YValidation)/numel(YValidation);
+%accuracy = sum(YPred == YValidation)/numel(YValidation);
+plotconfusion(YPred,YValidation)
+FDR = [0 0.018 1];
+TPR = [0 1 1];
+figure
+plot(FDR, TPR)
+grid
+axis([0 1 0 1]) 
+%% Calculate TP TN FP FN FDR NPV TPR TNR F1 ROC
+% TP: True Positive Object is A and predicted as A
+% TN: True Negative Object is B and predicted as B
+% FP: False Positive Object is B but predicted as A
+% FN: False Negative Object is A but predicted as B
+% FDR: False Discovery Rate = FP/(FP+TP)
+% NPV: Negative Predictive Value = TN/(TN+FN)
+% TPR: True Positive Rate(Sensitivity, Recall, Hit rate) = TP/(TP+FN) 
+% TNR: True Negative Rate (Specificity, Selectivity) = TN/(TN+FP);
+% F1 score: harmonic mean of precision and sensitivity = 2TP/(2TP+FP+FN)
+% ROC curve 
+
 %% Save the Network for future validation
 save net;
 
