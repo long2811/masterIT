@@ -48,7 +48,7 @@ L = 10; %Signal duration = 10s assumption
 n = 3400; % Number of samples
 k = (2*pi/L)*[0:n/2-1 -n/2:-1]; ks = fftshift(k); 
 %St = fft(S);
-
+fft
 Sgt_spec = [];
 tslide = 0:20:3400; % Moving Gabor filter every 20 samples !
 figure('Name',"Gabor transform of reading "+c)
