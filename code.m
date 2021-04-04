@@ -11,16 +11,22 @@
 clear; close all; clc
 A = readtable('combinedataforA.xlsx');
 B = readtable('combinedataforB.xlsx');
+save A
+save B
 %% Plot all the data of both Objects
+load A
+load B
 close all; clc
 
 t = (1:width(B)); % Time vector 1:3400 samples
 %figure('Name','All 315 readings for Object A in time domain')
-%for c = 1:315  
-%S = table2array(A(c,1:width(A))); % Extract data from the table
-%S = S./max(max(S),abs(min(S))); % normalizing
-%plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
-%title("Reading "+c);
+%for c = 1:315
+c = 1;
+S = table2array(A(c,1:width(A))); % Extract data from the table
+S = S./max(max(S),abs(min(S))); % normalizing
+plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
+title(" Object A Reading "+c);
+grid on
 %drawnow; pause(0.01)
 %end %Object A
 %figure('Name','All 200 readings for Object A in time domain')
@@ -48,7 +54,7 @@ L = 10; %Signal duration = 10s assumption
 n = 3400; % Number of samples
 k = (2*pi/L)*[0:n/2-1 -n/2:-1]; ks = fftshift(k); 
 %St = fft(S);
-fft
+
 Sgt_spec = [];
 tslide = 0:20:3400; % Moving Gabor filter every 20 samples !
 figure('Name',"Gabor transform of reading "+c)
