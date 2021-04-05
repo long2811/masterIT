@@ -91,8 +91,9 @@ Sgt_spec=Sgt_spec';% transpose the Spectrogram for better representation
 figure('Name',"Spectrogram of reading "+c+" of Object A")
 
 pcolor(tslide,ks,Sgt_spec),shading interp
-set(gca,'Ylim',[30 60])
+set(gca,'Ylim',[40 60])
 colormap gray
+
 set(gca, 'Visible', 'off');
 exportgraphics(gca,"spectrogramA_"+c+".jpg",'Resolution',100)
 pause(0.01);
