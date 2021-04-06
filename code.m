@@ -12,10 +12,8 @@ clear; close all; clc
 A = readtable('combinedataforA.xlsx');
 B = readtable('combinedataforB.xlsx');
 save A
-save B
 %% Plot all the data of both Objects
 load A
-load B
 close all; clc
 
 t = (1:width(A)); % Time vector 1:3400 samples

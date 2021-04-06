@@ -50,12 +50,40 @@ net = trainNetwork(imdsTrain,layers,options);
 %% Checking Network Performance
 YPred = classify(net,imdsValidation);
 YValidation = imdsValidation.Labels;
-%accuracy = sum(YPred == YValidation)/numel(YValidation);
+accuracy = sum(YPred == YValidation)/numel(YValidation);
 plotconfusion(YPred,YValidation)
-FDR = [0 0.018 1];
-TPR = [0 1 1];
+
+TP = 0;
+TN = 0;
+FP = 0;
+FN = 0;
+
+for i=1:size(YPred)
+    if (YValidation(i)=="spectrogramA")&&(YPred(i)=="spectrogramA")
+        TP = TP+1;
+    end
+    if (YValidation(i)=="spectrogramB")&&(YPred(i)=="spectrogramB")
+        TN = TN+1;
+    end
+    if (YValidation(i)=="spectrogramB")&&(YPred(i)=="spectrogramA")
+        FP = FP+1;
+    end
+    if (YValidation(i)=="spectrogramA")&&(YPred(i)=="spectrogramB")
+        FN = FN+1;
+    end
+end
+FDR = FP/(FP+TP);
+NPV = TN/(TN+FN);
+TPR = TP/(TP+FN);
+TNR = TN/(TN+FP);
+F1 = 2*TP/(2*TP+FP+FN);
+
+FPR = FP/(FP+TN);
+
+FPRm = [0 FPR 1];
+TPRm = [0 TPR 1];
 figure
-plot(FDR, TPR)
+plot(FPRm, TPRm)
 grid
 axis([0 1 0 1]) 
 %% Calculate TP TN FP FN FDR NPV TPR TNR F1 ROC
