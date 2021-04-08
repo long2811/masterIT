@@ -72,8 +72,10 @@ for i=1:size(YPred)
         FN = FN+1;
     end
 end
+PPV = TP/(FP+TP);
 FDR = FP/(FP+TP);
 NPV = TN/(TN+FN);
+FOR = FN/(TN+FN);
 TPR = TP/(TP+FN);
 TNR = TN/(TN+FP);
 F1 = 2*TP/(2*TP+FP+FN);
