@@ -17,33 +17,33 @@ load A
 close all; clc
 
 t = (1:width(A)); % Time vector 1:3400 samples
-%figure('Name','All 315 readings for Object A in time domain')
-%for c = 1:315
-c = 1;
-S = table2array(B(c,1:width(A))); % Extract data from the table
+figure('Name','All 315 readings for Object A in time domain')
+for c = 1:315
+% c = 1;
+S = table2array(A(c,1:width(A))); % Extract data from the table
 S = S./max(max(S),abs(min(S))); % normalizing
 plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
-title(" Object A Reading "+c);
-grid on
-%drawnow; pause(0.01)
-%end %Object A
-%figure('Name','All 200 readings for Object A in time domain')
-%for c = 1:200  
-%S = table2array(B(c,1:width(B))); 
-%S = S./max(max(S),abs(min(S))); 
-%plot(t,S); axis([1 width(B) -1 1]); xlabel('Samples'); ylabel('Amplitude')
-%title("Reading "+c);
-%drawnow; pause(0.01)
-%end %Object B
+title(" Object A Reading "+c);grid on
+drawnow; pause(0.01)
+end %Object A
+
+figure('Name','All 200 readings for Object B in time domain')
+for c = 1:200  
+S = table2array(B(c,1:width(B))); 
+S = S./max(max(S),abs(min(S))); 
+plot(t,S); axis([1 width(B) -1 1]); xlabel('Samples'); ylabel('Amplitude')
+title("Object B Reading "+c);grid on
+drawnow; pause(0.01)
+end %Object B
 %% Applying Gabor transformation
 % Reference Nathn Kitz - Time Frequencey Analysis & Gabor transforms
 % Applied Mathematics - University of Washington
 % close all
 
-%c = randi([1 315]); % Pulling a random reading from data of Object A
-for c = 1:200
+c = randi([1 315]); % Pulling a random reading from data of Object A
+% for c = 1:200
 close all
-S = table2array(B(c,1:width(B))); 
+S = table2array(A(c,1:width(A))); 
 S = S./max(max(S),abs(min(S))); % normalizing
 % figure('Name',"Reading "+c+" of Object A")
 % plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
@@ -64,16 +64,16 @@ g = exp(-5*1e-5*(t-tslide(j)).^2); %Gabor filter function
 Sg = g.*S;
 Sgt = fft(Sg);
 Sgt_spec=[Sgt_spec; abs(fftshift(Sgt))];
-% sb1 = subplot(3,1,1); plot(t,S,'k',t,g,'r')
-% title('Signal(back) and the Gabor filter(red)')
-% sb1.XLabel.String = 'time'; sb1.YLabel.String = 'amplitude'; axis([0 3400 -1 1])
-% sb2 = subplot(3,1,2); plot(t,Sg,'k')
-% title('Signal multiply with Gabor filter')
-% sb2.XLabel.String = 'time'; sb2.YLabel.String = 'amplitude'; axis([0 3400 -1 1])
-% sb3 = subplot(3,1,3); stem(ks,abs(fftshift(Sgt))/max(abs(fftshift(Sgt)))); %normalizing
-% sb3.XLabel.String = 'frequency'; sb3.YLabel.String = 'power'; axis([-100 100 0 1])
-% title('Spectrum of the signal inside Gabor filter')
-% pause(0.01)
+sb1 = subplot(3,1,1); plot(t,S,'k',t,g,'r')
+title('Signal(back) and the Gabor filter(red)')
+sb1.XLabel.String = 'time'; sb1.YLabel.String = 'amplitude'; axis([0 3400 -1 1])
+sb2 = subplot(3,1,2); plot(t,Sg,'k')
+title('Signal multiply with Gabor filter')
+sb2.XLabel.String = 'time'; sb2.YLabel.String = 'amplitude'; axis([0 3400 -1 1])
+sb3 = subplot(3,1,3); stem(ks,abs(fftshift(Sgt))/max(abs(fftshift(Sgt)))); %normalizing
+sb3.XLabel.String = 'frequency'; sb3.YLabel.String = 'power'; axis([-100 100 0 1])
+title('Spectrum of the signal inside Gabor filter')
+pause(0.01)
 end
 
 % for i = 1:171
@@ -87,7 +87,7 @@ figure('Name',"Spectrogram of reading "+c+" of Object A")
 pcolor(tslide,ks,Sgt_spec),shading interp
 set(gca,'Ylim',[30 60])
 colormap gray
-set(gca, 'Visible', 'off');
-exportgraphics(gca,"trainingData\spectrogramB\spectrogramB_"+c+".jpg",'Resolution',100)
-pause(0.01);
-end
+% set(gca, 'Visible', 'off');
+% exportgraphics(gca,"trainingData_new\spectrogramB\spectrogramB_"+c+".jpg",'Resolution',100)
+% pause(0.01);
+% end

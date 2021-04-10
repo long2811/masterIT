@@ -33,7 +33,6 @@ layers = [
     fullyConnectedLayer(2)
     softmaxLayer
     classificationLayer];
-
 %% Specify Training Options for the model
 options = trainingOptions('sgdm', ...
     'InitialLearnRate',0.01, ...
@@ -52,12 +51,7 @@ YPred = classify(net,imdsValidation);
 YValidation = imdsValidation.Labels;
 accuracy = sum(YPred == YValidation)/numel(YValidation);
 plotconfusion(YPred,YValidation)
-
-TP = 0;
-TN = 0;
-FP = 0;
-FN = 0;
-
+TP = 0; TN = 0; FP = 0; FN = 0;
 for i=1:size(YPred)
     if (YValidation(i)=="spectrogramA")&&(YPred(i)=="spectrogramA")
         TP = TP+1;
@@ -81,7 +75,7 @@ TNR = TN/(TN+FP);
 F1 = 2*TP/(2*TP+FP+FN);
 
 FPR = FP/(FP+TN);
-
+%ROC plot
 FPRm = [0 FPR 1];
 TPRm = [0 TPR 1];
 figure
@@ -99,7 +93,5 @@ axis([0 1 0 1])
 % TNR: True Negative Rate (Specificity, Selectivity) = TN/(TN+FP);
 % F1 score: harmonic mean of precision and sensitivity = 2TP/(2TP+FP+FN)
 % ROC curve 
-
 %% Save the Network for future validation
 save net;
-
