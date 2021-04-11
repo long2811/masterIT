@@ -16,13 +16,13 @@ save A
 load A
 close all; clc
 
-t = (1:width(A)); % Time vector 1:3400 samples
+t = (1:width(B)); % Time vector 1:3400 samples
 %figure('Name','All 315 readings for Object A in time domain')
 %for c = 1:315
 c = 1;
-S = table2array(B(c,1:width(A))); % Extract data from the table
+S = table2array(A(c,1:width(A))); % Extract data from the table
 S = S./max(max(S),abs(min(S))); % normalizing
-plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
+plot(t,S); axis([1 width(B) -1 1]); xlabel('Samples'); ylabel('Amplitude')
 title(" Object A Reading "+c);
 grid on
 %drawnow; pause(0.01)
@@ -41,9 +41,9 @@ grid on
 % close all
 
 %c = randi([1 315]); % Pulling a random reading from data of Object A
-for c = 1:200
+for c = 1:315
 close all
-S = table2array(B(c,1:width(B))); 
+S = table2array(A(c,1:width(A))); 
 S = S./max(max(S),abs(min(S))); % normalizing
 % figure('Name',"Reading "+c+" of Object A")
 % plot(t,S); axis([1 width(A) -1 1]); xlabel('Samples'); ylabel('Amplitude')
@@ -88,6 +88,6 @@ pcolor(tslide,ks,Sgt_spec),shading interp
 set(gca,'Ylim',[30 60])
 colormap gray
 set(gca, 'Visible', 'off');
-exportgraphics(gca,"trainingData\spectrogramB\spectrogramB_"+c+".jpg",'Resolution',100)
+exportgraphics(gca,"trainingData\spectrogramA\spectrogramA_"+c+".jpg",'Resolution',300)
 pause(0.01);
 end
