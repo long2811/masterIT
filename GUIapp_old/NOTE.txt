@@ -1,1 +1,5 @@
-put the app in the same directory with the data to run 
+put the app in the same directory with the data to run
+
+Remember to cd GUIapp_old before or pwd will use the outside folder of the directory
+
+It will still run, but it will make a mess
