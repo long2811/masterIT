@@ -3,7 +3,7 @@
 % Machine Learning Project Winter Semester 2020/21 by Prof.Dr.Andreas Pech
 % Group Task 3: Sensor reading classification by applying Gabor transformation and
 % machine learning binary classifiers
-% NGUYEN, HOANG LONG 1067534 hoang.nguyen3@stu.fra-uas.de
+% NGUYEN, HOANG LONG 1067534 hoang.nguyen3@stud.fra-uas.de
 % TRUONG, THANH TOAN 1185050 tthanh@stud.fra-uas.de
 % NGUYEN, THANH DUY 1067783 duy.nguyenthanh2@stud.fra-uas.de
 

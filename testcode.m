@@ -1,5 +1,4 @@
 clear
-
 load net.mat
 %%
 clc
